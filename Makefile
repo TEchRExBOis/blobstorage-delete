@@ -1,9 +1,10 @@
-#target:
-#	az storage blob list --account-name storageaccountblob1235  --container-name staging1 --prefix "" --only-show-errors | jq -r '.[].name'
-AZ_CLI_COMMAND := az storage blob list --account-name storageaccountblob1235  --container-name staging1 --prefix "" --only-show-errors | jq -r '.[].name'
-MY_ARRAY := $(shell $(AZ_CLI_COMMAND))
-target:	
+ARRAY := element1 element2 element3
+FILTER_STRING := element3
+
+target:
 	$(foreach item,$(ARRAY), \
-		@echo $(item); \
+		$(if $(findstring $(FILTER_STRING),$(item)), \
+			@echo $(item) contains $(FILTER_STRING); \
+		) \
 	)
-.PHONY: target
+
