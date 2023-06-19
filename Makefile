@@ -1,10 +1,16 @@
-numbers := 1 2 3 4 5
-my_array=($(az storage blob list --account-name storageaccountblob1235  --container-name staging1 --prefix "" --only-show-errors | jq -r '.[].name'))
+AZ_CLI_COMMAND = az storage blob list --account-name storageaccountblob1235 --container-name staging1 --prefix "" --only-show-errors
+FILTER_STRING ?=
+
 target:
-	$(foreach my_array,$(my_array), \
-		#$(if $(filter-out 4,$(number)), \
-		#	$(info $(number) is less than 4), \
-		#	$(info $(number) is greater than or equal to 4) \
-			$(info $(my_array)) \
-		#) \
-	)
+	@my_array=($$( $(AZ_CLI_COMMAND) | jq -r '.[].name' )); \
+	found_directories=false; \
+	$(foreach item,$${my_array}, \
+		if [[ "$(item)" == *"${FILTER_STRING}"* ]]; then \
+			echo "$(item)"; \
+			found_directories=true; \
+			az storage blob delete --account-name storageaccountblob1235 --container-name staging1 --name "$(item)"; \
+		fi; \
+	); \
+	if [ "$$found_directories" = false ]; then \
+		echo "No directories matching the filter string were found."; \
+	fi
