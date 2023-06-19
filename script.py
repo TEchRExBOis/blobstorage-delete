@@ -1,5 +1,6 @@
 import subprocess
 import json
+import sys
 
 filter_string = sys.argv[1]
 storage_account_name = sys.argv[2]
