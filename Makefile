@@ -5,9 +5,9 @@ MY_ARRAY := $(shell $(AZ_CLI_COMMAND))
 #MY_ARRAY_LIST := $(subst $(eval) ,$(eval),$(MY_ARRAY))
 
 target:
-	@echo "my_array=($(MY_ARRAY))"
+	
 	$(foreach item,$(MY_ARRAY), \
-		@echo $(item); \
+		echo $(item); \
 	)
 	
 
