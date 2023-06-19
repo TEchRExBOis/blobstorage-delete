@@ -4,8 +4,8 @@ containername:
 	found_directories=false
 	for item in "${my_array[@]}"; do \
   # Check if the item contains the filter string
-  		if [[ "$item" == *"$filter_string"* ]]; then \
-    			echo "$item"
+  	  if [[ "$item" == *"$filter_string"* ]]; then \
+    	   echo "$item"
     			found_directories=true
     # Perform additional operations on the matching directory
     			az storage blob delete --account-name storageaccountblob1235 --container-name staging1 --name "$item"
