@@ -1,12 +1,6 @@
-array_name := az storage blob list --account-name storageaccountblob1235  --container-name staging1 --prefix "" --only-show-errors | jq -r '.[].name'
-#ARRAY := element1 element2 element3
-ARRAY := $(shell $(array_name))
+AZ_CLI_COMMAND := az storage blob list --account-name storageaccountblob1235 --container-name staging1 --prefix "" --only-show-errors
 FILTER_STRING := temp-logs
 
 target:
-	$(foreach item,$(ARRAY), \
-		$(if $(findstring $(FILTER_STRING),$(item)), \
-			@echo $(item) contains $(FILTER_STRING); \
-		) \
-	)
-
+	@my_array=$$( $(AZ_CLI_COMMAND) | jq -r '.[].name' | grep $(FILTER_STRING) ); \
+	echo "Filtered array: $${my_array}"
