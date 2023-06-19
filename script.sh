@@ -15,8 +15,8 @@ for item in "${my_array[@]}"; do
     echo "$item"
     found_directories=true
     # Perform additional operations on the matching directory
-    az storage blob delete --account-name "$1" --container-name "$2" --name "$item"
-    #"{$item} is deleted"
+    az storage blob delete --account-name "$1" --container-name "$2" --name "$item" --only-show-errors
+    echo "$item is deleted"
     #found_directories=true
   fi
 done
