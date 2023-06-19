@@ -39,6 +39,6 @@ jobs:
           echo "CONTAINER_NAME=${CONTAINER_NAME}" >> $GITHUB_ENV
       
       - name: Delete Dir Name
-        run: make containername 
+        run: make containername "${STORAGE_ACCOUNT_NAME}" "${CONTAINER_NAME}" "${FILTER_STRING}"
           
 
