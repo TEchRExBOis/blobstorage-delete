@@ -24,6 +24,15 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      
+      #Storage Account
+      - name: Set up Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+      - name: Get Container Names
+        run: make containername
+          
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
