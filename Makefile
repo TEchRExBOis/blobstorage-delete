@@ -1,11 +1,9 @@
 build:
-     echo "build commands"
+     @echo "build commands"
 
 test:
-	# Add test commands here
-     echo "test commands"
+     @echo "test commands"
 
 deploy:
-	# Add deployment commands here
-     echo "deploy commands"
+     @echo "deploy commands"
 
