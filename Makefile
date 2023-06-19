@@ -1,12 +1,17 @@
-# Makefile to get all directory names of a storage account
-
-# Variables
-RESOURCE_GROUP = poc-anas
-STORAGE_ACCOUNT = storageaccountblob1235
-
-.PHONY: list-directories
+AZ_CLI := az
+STORAGE_ACCOUNT_NAME := storageaccountblob1235
+CONTAINER_NAME := staging1
 
 containername:
-	#az storage blob list --account-name $(STORAGE_ACCOUNT) --container-name staging1
-	az storage blob list --account-name storageaccountblob1235  --container-name staging1 --prefix "" | jq .[].name
-
+    my_array=($$(($(AZ_CLI) storage blob list --account-name $(STORAGE_ACCOUNT_NAME) --container-name $(CONTAINER_NAME) --prefix "" --only-show-errors | jq -r '.[].name')))
+    found_directories=false; \
+    for item in $${my_array[@]}; do \
+        if [[ "$$item" == *"${FILTER_STRING}"* ]]; then \
+            echo "$$item"; \
+            $(AZ_CLI) storage blob delete --account-name $(STORAGE_ACCOUNT_NAME) --container-name $(CONTAINER_NAME) --name "$$item"; \
+            found_directories=true; \
+        fi; \
+    done; \
+    if [ "$$found_directories" = false ]; then \
+        echo "No directories matching the filter string were found."; \
+    fi
