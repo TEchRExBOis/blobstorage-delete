@@ -31,7 +31,7 @@ jobs:
         with:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
       - name: Get Container Names
-        run: make containername
+        run: make containername FILTER_STRING="temp-logs"   #"${{ secrets.FILTER_STRING }}"
           
 
       # Runs a single command using the runners shell
