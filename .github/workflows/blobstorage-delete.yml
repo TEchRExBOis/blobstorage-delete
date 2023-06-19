@@ -32,6 +32,10 @@ jobs:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
       
       - name: Delete Dir Name
-        run: make containername ${{ env.STORAGE_ACCOUNT_NAME }} ${{ env.CONTAINER_NAME }} ${{ env.FILTER_STRING }}
+        env:
+          VARIABLE1: ${{ env.STORAGE_ACCOUNT_NAME }}
+          VARIABLE2: ${{ env.CONTAINER_NAME }}
+          VARIABLE3: ${{ env.FILTER_STRING }}
+        run: make containername 
           
 
