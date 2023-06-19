@@ -1,7 +1,4 @@
 #!/bin/bash
-sa-name=
-c-name=
-filter_string=
 my_array=($(az storage blob list --account-name `$1` --container-name `$2` --prefix "" --only-show-errors | jq -r '.[].name'))
 # Read the input string
 read -p "Enter the filter string: " filter_string
