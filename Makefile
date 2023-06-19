@@ -3,7 +3,7 @@
 AZ_CLI_COMMAND := az storage blob list --account-name storageaccountblob1235  --container-name staging1 --prefix "" --only-show-errors | jq -r '.[].name'
 MY_ARRAY := $(shell $(AZ_CLI_COMMAND))
 target:	
-	$(foreach item,$(MY_ARRAY), \
-		echo $(item); \
+	$(foreach item,$(ARRAY), \
+		@echo $(item); \
 	)
 .PHONY: target
