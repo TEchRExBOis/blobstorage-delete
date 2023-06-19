@@ -2,7 +2,7 @@
 sa-name=$1
 c-name=$2
 filter_string=$3
-my_array=($(az storage blob list --account-name ${sa-name}  --container-name ${c-name} --prefix "" --only-show-errors | jq -r '.[].name'))
+my_array=($(az storage blob list --account-name "$sa-name"  --container-name "$c-name" --prefix "" --only-show-errors | jq -r '.[].name'))
 # Read the input string
 read -p "Enter the filter string: " filter_string
 
@@ -18,7 +18,7 @@ for item in "${my_array[@]}"; do
     echo "$item"
     found_directories=true
     # Perform additional operations on the matching directory
-    az storage blob delete --account-name ${sa-name} --container-name ${c-name} --name "$item"
+    az storage blob delete --account-name "$sa-name" --container-name "$c-name" --name "$item"
     #"{$item} is deleted"
     #found_directories=true
   fi
