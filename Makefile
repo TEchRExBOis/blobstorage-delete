@@ -7,8 +7,5 @@ STORAGE_ACCOUNT = storageaccountblob1235
 .PHONY: list-directories
 
 containername:
-	az storage fs directory list \
-		--account-name $(STORAGE_ACCOUNT) \
-		--resource-group $(RESOURCE_GROUP) \
-		--output table
+	az storage blob list --account-name $(STORAGE_ACCOUNT) --container-name staging1
 
