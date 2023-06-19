@@ -5,6 +5,6 @@ target:
 		#$(if $(filter-out 4,$(number)), \
 		#	$(info $(number) is less than 4), \
 		#	$(info $(number) is greater than or equal to 4) \
-			$(info $(my_array))
-		) \
+			$(info $(my_array)) \
+		#) \
 	)
