@@ -30,15 +30,8 @@ jobs:
         uses: azure/login@v1
         with:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
-          
-      #pass variable to Makefile
-      - name: Set up environment variables
-        run: |
-          echo "FILTER_STRING=${FILTER_STRING}" >> $GITHUB_ENV
-          echo "STORAGE_ACCOUNT_NAME=${STORAGE_ACCOUNT_NAME}" >> $GITHUB_ENV
-          echo "CONTAINER_NAME=${CONTAINER_NAME}" >> $GITHUB_ENV
       
       - name: Delete Dir Name
-        run: make containername "${STORAGE_ACCOUNT_NAME}" "${CONTAINER_NAME}" "${FILTER_STRING}"
+        run: make containername ${{ env.STORAGE_ACCOUNT_NAME }} ${{ env.CONTAINER_NAME }} ${{ env.FILTER_STRING }}
           
 
