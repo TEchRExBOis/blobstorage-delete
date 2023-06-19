@@ -6,6 +6,9 @@ MY_ARRAY := $(shell $(AZ_CLI_COMMAND))
 
 target:
 	@echo "my_array=($(MY_ARRAY))"
+	$(foreach item,$(MY_ARRAY), \
+		@echo $(item); \
+	)
 	
 
 .PHONY: target
