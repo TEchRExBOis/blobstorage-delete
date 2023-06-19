@@ -29,14 +29,10 @@ jobs:
       - name: Set up Azure CLI
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }} 
-          enable-AzPSSession: true
-
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
       - name: Get Container Names
         run: |
-          az storage container list --account-name poctesting123 --query "[].name" --output tsv
+          az storage container list --account-name storageaccountblob1235 --query "[].name" --output tsv
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
