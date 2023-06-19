@@ -36,6 +36,6 @@ jobs:
           VARIABLE1: ${{ vars.STORAGE_ACCOUNT_NAME }}
           VARIABLE2: ${{ vars.CONTAINER_NAME }}
           VARIABLE3: ${{ vars.FILTER_STRING }}
-        run: make containername 
+        run: make target 
           
 
