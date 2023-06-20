@@ -33,9 +33,9 @@ jobs:
       
       - name: Delete Dir Name
         env:
-          VARIABLE1: ${{ vars.STORAGE_ACCOUNT_NAME }}
-          VARIABLE2: ${{ vars.CONTAINER_NAME }}
-          VARIABLE3: ${{ vars.FILTER_STRING }}
+          STORAGE_ACCOUNT_NAME: ${{ vars.STORAGE_ACCOUNT_NAME }}
+          CONTAINER_NAME: ${{ vars.CONTAINER_NAME }}
+          FILTER_STRING_SEARCH: ${{ vars.FILTER_STRING }}
         run: make target 
           
 
