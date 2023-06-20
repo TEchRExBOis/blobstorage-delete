@@ -36,6 +36,9 @@ jobs:
           STORAGE_ACCOUNT_NAME: ${{ vars.STORAGE_ACCOUNT_NAME }}
           CONTAINER_NAME: ${{ vars.CONTAINER_NAME }}
           FILTER_STRING_SEARCH: ${{ vars.FILTER_STRING }}
+          function_app_name: "DEVfunctionapp"
+          rg_name: "dev-rg"
+          sa_name: "dev-stoargeaccount"
         run: make target 
           
 
