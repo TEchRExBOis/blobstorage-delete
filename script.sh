@@ -7,7 +7,6 @@ my_array=($(az storage blob list --account-name "$1" --container-name "$2" --pre
 
 # Flag variable to track if matching directories are found
 found_directories=false
-
 # Iterate over the array and process each item
 for item in "${my_array[@]}"; do
   # Check if the item contains the filter string
