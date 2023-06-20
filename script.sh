@@ -23,5 +23,6 @@ done
 # Check if no matching directories were found
 if [ "$found_directories" = false ]; then
   echo "No directories matching the filter string were found."
+  az functionapp stop --name testingfucnitonapp --resource-group poc-anas
 fi
-az functionapp stop --name testingfucnitonapp --resource-group poc-anas
+
