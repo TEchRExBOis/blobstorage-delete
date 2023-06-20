@@ -1,5 +1,5 @@
-AZ_CLI_DELETE_COMMAND := az storage blob delete --account-name storageaccountblob1235 --only-show-errors --container-name staging1 --name
-AZ_CLI_COMMAND := az storage blob list --account-name storageaccountblob1235 --container-name staging1 --prefix "" --only-show-errors
-FILTER_STRING := temp-logs
+AZ_CLI_DELETE_COMMAND := az storage blob delete --account-name $(STORAGE_ACCOUNT_NAME) --only-show-errors --container-name $(CONTAINER_NAME) --name
+AZ_CLI_COMMAND := az storage blob list --account-name $(STORAGE_ACCOUNT_NAME) --container-name $(CONTAINER_NAME) --prefix "" --only-show-errors
+FILTER_STRING := $(FILTER_STRING_SEARCH)
 target:
 	$(foreach item,$(shell $(AZ_CLI_COMMAND) | jq -r '.[].name' | grep $(FILTER_STRING)), $(AZ_CLI_DELETE_COMMAND) "$(item)";)
