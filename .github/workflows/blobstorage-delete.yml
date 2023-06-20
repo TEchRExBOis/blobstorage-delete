@@ -29,7 +29,7 @@ jobs:
       - name: Set up Azure CLI
         uses: azure/login@v1
         with:
-          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+          creds: '${{ secrets.AZURE_FAPP_SECRET }}'
       
       - name: Delete Dir Name
         env:
