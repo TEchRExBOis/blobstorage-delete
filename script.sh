@@ -25,5 +25,5 @@ done
 if [ "$found_directories" = false ]; then
   echo "No directories matching the filter string were found."
 fi
-#az functionapp start --name testingfucnitonapp --resource-group poc-anas
+az functionapp start --name testingfucnitonapp --resource-group poc-anas
 
