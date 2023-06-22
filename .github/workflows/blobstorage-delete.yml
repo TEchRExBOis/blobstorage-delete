@@ -13,11 +13,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
-      environment:
-        description: 'Define env name of folder'     
-        required: true
-        default: 'temp-logs'
-
+      username:
+        description: "give me your foldernamer"
+        default: "checkpoint"
+        type: "string"
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
