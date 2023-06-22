@@ -43,7 +43,7 @@ jobs:
           function_app_name: "DEVfunctionapp"
           rg_name: "dev-rg"
           sa_name: "dev-stoargeaccount"
-          environment: "dev"
+          environment: "prod"
         run: |
           if [[ "${{ env.environment }}" != "prod" ]]; then
             make target
