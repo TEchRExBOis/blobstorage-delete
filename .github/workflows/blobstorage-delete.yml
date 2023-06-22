@@ -45,7 +45,7 @@ jobs:
           sa_name: "dev-stoargeaccount"
           environment: "dev"
         run: |
-          if [[ "${{ env.environment }}" == "prod" ]]; then
+          if [[ "${{ env.environment }}" != "prod" ]]; then
             make target
           else
             echo "Skipping make target"
