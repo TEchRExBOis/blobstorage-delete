@@ -43,6 +43,12 @@ jobs:
           function_app_name: "DEVfunctionapp"
           rg_name: "dev-rg"
           sa_name: "dev-stoargeaccount"
-        run: make target 
+          environment: "dev"
+        run: |
+          if [[ "${{ env.environment }}" == "prod" ]]; then
+            make target
+          else
+            echo "Skipping make target"
+          fi
           
 
